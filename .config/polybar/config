@@ -52,17 +52,17 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-
-font-0 = Font Awesome 5 Free Solid:style=Solid:antialias=true
-font-1 = Font Awesome 5 Brands Regular:style=Regular:antialias=true
-font-2 = Font Awesome 5 Free Regular:style=Regular:antialias=true
-font-3 = DroidSansMono Nerd Font:style=Book
-font-4 = DroidSansMono NF:style=Book
-font-5 = DroidSansMono Nerd Font Mono:style=Book
-font-6 = DroidSansMono NF:style=Book
-font-7 = fixed:pixelsize=10;1
-font-8 = unifont:fontformat=truetype:size=8:antialias=true;0
-font-9 = siji:pixelsize=10;1
+font-0 = Font Awesome 5 Pro:style=Solid:antialias=true
+font-1 = Font Awesome 5 Free Solid:style=Solid:antialias=true
+font-2 = Font Awesome 5 Brands Regular:style=Regular:antialias=true
+font-3 = Font Awesome 5 Free Regular:style=Regular:antialias=true
+font-4 = DroidSansMono Nerd Font:style=Book
+font-5 = DroidSansMono NF:style=Book
+font-6 = DroidSansMono Nerd Font Mono:style=Book
+font-7 = DroidSansMono NF:style=Book
+font-8 = fixed:pixelsize=10;1
+font-9 = unifont:fontformat=truetype:size=8:antialias=true;0
+font-10 = siji:pixelsize=10;1
 
 ;modules-left = bspwm i3
 modules-left = i3
@@ -235,11 +235,10 @@ type = internal/network
 interface = wlp1s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+format-connected =  <label-connected>
+label-connected =  %essid%%downspeed:9%
 
-format-disconnected =
+format-disconnected = Disconnected
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
@@ -342,54 +341,35 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = AC
+adapter = ADPI
 full-at = 98
+poll-interval = 5
 
-format-charging = <animation-charging> <label-charging>
-;format-charging-underline = #ffb52a
+format-charging = <label-charging>
+label-charging = Charging %percentage%%
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <label-discharging>
+label-discharging =  %percentage%% 
 ;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-;format-full-underline = ${self.format-charging-underline}
+label-full = Fully charged
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-; ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-; animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-; animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+base-temperature = 20
+warn-temperature = 50
 
-format = <ramp>  <label>
-;format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-;format-warn-underline = ${self.format-underline}
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input
+format =  <label>
+format-warn = <label-warn>
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-; ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
