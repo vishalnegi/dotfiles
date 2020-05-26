@@ -1,19 +1,19 @@
 call plug#begin()
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'Yggdroot/indentLine'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ap/vim-css-color'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'morhetz/gruvbox'
+    Plug 'preservim/nerdcommenter'
+    Plug 'preservim/nerdtree'
+    Plug 'vim-airline/vim-airline'
+    Plug 'Yggdroot/indentLine'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'ap/vim-css-color'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'morhetz/gruvbox'
 "For searching file (contro+p)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'machakann/vim-highlightedyank'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'machakann/vim-highlightedyank'
 "Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
@@ -54,6 +54,7 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
  
 "Mouse
 set mouse=a
@@ -126,6 +127,8 @@ nnoremap <C-c> "+yy
 
 
 "NeoVim
+nnoremap j gj
+nnoremap k gk
 set shiftwidth=4
 set clipboard+=unnamedplus
 set path+=**
@@ -235,3 +238,6 @@ let g:jedi#use_splits_not_buffers = "right"
 
 "To get correct comment highlighting (not sure about this)
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+"To show quotes in json files
+set conceallevel=0
