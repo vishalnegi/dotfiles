@@ -305,7 +305,7 @@ background_opacity: 0.80
 dynamic_title: true
 
 cursor:
-        style: 'Beam'
+        style: 'Block'
         unfocused_hollow: true
   # Cursor style
   #
@@ -536,7 +536,7 @@ cursor:
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
   # (Windows, Linux, and BSD only)
-  - { key: V,        mods: Control,       action: Paste            }
+  - { key: P,        mods: Control,       action: Paste            }
   - { key: C,        mods: Control,       action: Copy             }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
