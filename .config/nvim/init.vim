@@ -2,6 +2,7 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/nerdtree'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'Yggdroot/indentLine'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
@@ -92,7 +93,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-"let g:airline_theme='gruvbox'
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -155,7 +155,9 @@ set nohlsearch                                      "remove highlight after sear
 
 "CoC
 set hidden
+set cmdheight=2
 set updatetime=300
+set shortmess+=c
 set signcolumn=yes
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -174,6 +176,14 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <F2> <Plug>(coc-references)
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 "Indent Line 
 let g:indentLine_char = '┊'   " ['|', '¦', '┆', '┊']
@@ -241,3 +251,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 "To show quotes in json files
 set conceallevel=0
+set termguicolors
+
+" let mapleader=";"
+:nnoremap <leader>n :bn<cr>
+:nnoremap <leader>p :bp<cr>
+:nnoremap <leader>q :q<cr>
