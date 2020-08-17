@@ -69,7 +69,7 @@ font-11 = Material Icons:style=Regular:antialias=true
 modules-left = i3
 ;modules-center = mpd
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right =  pulseaudio memory cpu wlan battery temperature date
+modules-right =  filesystem pulseaudio memory cpu wlan battery temperature date
 
 tray-position = right
 tray-padding = 5
