@@ -63,12 +63,13 @@ font-7 = DroidSansMono NF:style=Book
 font-8 = fixed:pixelsize=10;1
 font-9 = unifont:fontformat=truetype:size=8:antialias=true;0
 font-10 = siji:pixelsize=10;1
+font-11 = Material Icons:style=Regular:antialias=true
 
 ;modules-left = bspwm i3
 modules-left = i3
 ;modules-center = mpd
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right =  pulseaudio memory cpu wlan battery temperature date powermenu
+modules-right =  pulseaudio memory cpu wlan battery temperature date
 
 tray-position = right
 tray-padding = 5
@@ -168,7 +169,7 @@ label-unfoused-padding = 2
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-padding = 2
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
@@ -225,7 +226,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
+format-prefix = "RAM "
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 label = %percentage_used%%
@@ -286,29 +287,35 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+;format-volume = <label-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
 label-volume = VOL %percentage%%
 ;label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+label-muted = Muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+; bar-volume-width = 10
+; bar-volume-foreground-0 = #55aa55
+; bar-volume-foreground-1 = #55aa55
+; bar-volume-foreground-2 = #55aa55
+; bar-volume-foreground-3 = #55aa55
+; bar-volume-foreground-4 = #55aa55
+; bar-volume-foreground-5 = #f5a70a
+; bar-volume-foreground-6 = #ff5555
+; bar-volume-gradient = false
+; bar-volume-indicator = |
+; bar-volume-indicator-font = 2
+; bar-volume-fill = ─
+; bar-volume-fill-font = 2
+; bar-volume-empty = ─
+; bar-volume-empty-font = 2
+; bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
@@ -348,9 +355,13 @@ poll-interval = 5
 format-charging = <label-charging>
 label-charging = Charging %percentage%%
 
-format-discharging = <label-discharging>
-label-discharging =  %percentage%% 
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
 ;format-discharging-underline = ${self.format-charging-underline}
+ramp-capacity-0 =  
+ramp-capacity-0-foreground = #de0037
+ramp-capacity-1 =  
+ramp-capacity-2 =  
 
 format-full-prefix = " "
 label-full = Fully charged
